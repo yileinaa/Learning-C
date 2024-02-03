@@ -1,0 +1,5 @@
+﻿  game1.c
+C:\Users\14633\Desktop\C\1.31\1.31\game1.c(2,20): warning C4028: 形参 1 与声明不同
+C:\Users\14633\Desktop\C\1.31\1.31\game1.c(14,24): warning C4028: 形参 1 与声明不同
+C:\Users\14633\Desktop\C\1.31\1.31\game1.c(60,20): warning C4028: 形参 1 与声明不同
+  1.31.vcxproj -> C:\Users\14633\Desktop\C\1.31\x64\Debug\1.31game2.exe
