@@ -1,0 +1,5 @@
+﻿  test.c
+C:\Users\14633\Desktop\C\2024.2.4\2024.2.4\test.c(9,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+C:\Users\14633\Desktop\C\2024.2.4\2024.2.4\test.c(9,9): message : 请考虑在格式字符串中使用“%zd”
+C:\Users\14633\Desktop\C\2024.2.4\2024.2.4\test.c(8,8): warning C4047: “初始化”:“char *”与“char”的间接级别不同
+  2024.2.4.vcxproj -> C:\Users\14633\Desktop\C\2024.2.4\x64\Debug\2024.2.4.exe
