@@ -9,11 +9,17 @@
 //    return 0;
 //}
 //判断大端小端
+int check_sys()
+{
+	int a = 1;
+	return *(char*)&a;
+}
 int main()
 {
-	int a = 1; 
-	char* b = &(char)a;
-	*b = 2;
-	if(a)
+	int ret = check_sys();
+	if (ret == 1)
+		printf("小端");
+	else
+		printf("大端");
 	return 0;
 }
