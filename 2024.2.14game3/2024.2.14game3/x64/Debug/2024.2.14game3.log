@@ -1,0 +1,4 @@
+﻿  test.c
+C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\test.c(18,19): warning C4020: “Show”: 实参太多
+C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\test.c(27,20): warning C4020: “Show”: 实参太多
+  2024.2.14game3.vcxproj -> C:\Users\14633\Desktop\C\2024.2.14game3\x64\Debug\2024.2.14game3.exe

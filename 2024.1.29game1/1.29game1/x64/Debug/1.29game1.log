@@ -1,4 +1,6 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: 中间目录(x64\Debug\)包含从另一个项目(1.29game1.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
   game.c
-C:\Users\14633\Desktop\C\1.29game1\1.29game1\game.c(172): warning C4715: “is_unFull”: 不是所有的控件路径都返回值
-  1.29game1.vcxproj -> C:\Users\14633\Desktop\C\1.29game1\x64\Debug\1.29,1.30game1.exe
+  test.c
+  正在生成代码...
+C:\Users\14633\Desktop\C\2024.1.29game1\1.29game1\game.c(172): warning C4715: “is_unFull”: 不是所有的控件路径都返回值
+  1.29game1.vcxproj -> C:\Users\14633\Desktop\C\2024.1.29game1\x64\Debug\1.29,1.30game1.exe
