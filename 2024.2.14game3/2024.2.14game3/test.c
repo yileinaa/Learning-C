@@ -10,12 +10,12 @@ void menu()
 void game()
 {
 	srand((unsigned int)time(NULL));
-	int times = 50;
+	int times = 100;
 	char board[R+1][C] = { 0 };
 	Int(board, R, C);
 	Obs(board, R, C, times);
 	board[R-1][0] = 'p';
-	Show(board, R, C,times);
+	Show(board, R, C);
 	while (times) {
 		system("cls");
 		int o = Obs_move(board, R, C);
@@ -24,7 +24,7 @@ void game()
 			printf("failure!\n");
 			break;
 		}
-		Show(board, R, C,times);
+		Show(board, R, C);
 		int p = Play_move(board, R, C);
 		if (p == 1){
 			printf("failure!\n");
@@ -41,7 +41,7 @@ void exam()
 	do
 	{
 		menu();
-		printf("ÇëÑ¡Ôñ:>");
+		printf("ÇëÑ¡Ôñ:>");	   
 		scanf("%d", &input);
 		switch (input)
 		{

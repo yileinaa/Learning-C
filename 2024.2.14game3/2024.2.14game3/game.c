@@ -1,5 +1,115 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "game.h"
+void wasd(char board[R][C], int i, int j, char input)
+{
+	if (input == 'a')
+	{
+		if (j != 0)
+		{
+			int a;
+			a = board[i][j - 1];
+			if (a != '*') {
+				board[i][j - 1] = board[i][j];
+				board[i][j] = a;
+			}
+			if (a == '*')
+				return 1;
+		}
+	}
+	if (input == 'd')
+	{
+		if (j != C - 1)
+		{
+			int a;
+			a = board[i][j + 1];
+			if (a != '*')
+			{
+				board[i][j + 1] = board[i][j];
+				board[i][j] = a;
+			}
+			if (a == '*')
+				return 1;
+		}
+	}
+	if (input == 'w')
+	{
+		int a;
+		a = board[i - 1][j];
+		if (a != '*')
+		{
+			board[i - 1][j] = board[i][j];
+			board[i][j] = a;
+		}
+		if (a == '*')
+			return 1;
+	}
+	if (input == 's')
+	{
+		int a;
+		a = board[i + 1][j];
+		if (a != '*' && i != R - 1)
+		{
+			board[i + 1][j] = board[i][j];
+			board[i][j] = a;
+		}
+		if (a == '*')
+			return 1;
+	}
+	if (input == 'q')
+	{
+		;
+	}
+}
+void shot(char board[R][C], int i, int j, char shot)
+{
+	if (shot == 'j')//ÊúÅÚ
+	{
+		int n;
+		for (n = i - 1; n >= 0; n--)
+		{
+			system("cls");
+			board[n][j] = '|';
+			Show(board, R, C);
+		}
+		for (n = 0; n < i; n++)
+		{
+			board[n][j] = ' ';
+		}
+	}
+	if (shot == 'k')//¾ØÐÎÅÚ
+	{
+		int n, m;
+		int z = 2;//·¶Î§
+		for (n = i; n >= i - z; n--)
+		{
+			for (m = j - z; m <= j + z; m++)
+			{
+				if (board[n][m] != board[i][j])
+				{
+					board[n][m] = '&';
+				}
+			}
+		}
+		system("cls");
+		Show(board, R, C);
+		Sleep(100);
+		for (n = i; n >= i - z; n--)
+		{
+			for (m = j - z; m <= j + z; m++)
+			{
+				if (board[n][m] != board[i][j])
+				{
+					board[n][m] = ' ';
+				}
+			}
+		}
+	}
+	if (shot == 'l')//´óÕÐÇåÆÁ
+	{
+		Int(board, R, C);
+		board[i][j] = 'p';
+	}
+}
 void Int(char board[R][C], int r,int c)
 {
 	int i, j;
@@ -11,7 +121,7 @@ void Int(char board[R][C], int r,int c)
 		}
 	}
 }
-void Show(char board[R][C], int r, int c,int times)
+void Show(char board[R][C], int r, int c)
 {
 	int i, j;
 	for (i = 0; i < r; i++)
@@ -26,7 +136,6 @@ void Show(char board[R][C], int r, int c,int times)
 				printf(" %c ", board[i][j]);
 		}printf("\n");
 	}
-	printf("%d", times);
 }
 void Obs(char board[R][C], int r, int c, int times)
 {
@@ -70,52 +179,25 @@ int Obs_move(char board[R+1][C], int r, int c)
 }
 int Play_move(char board[R][C], int r, int c)
 {
-	char inx = 3;
-	int iny;
-	Sleep(100);
+	char input;
+	Sleep(500);
 	if (!_kbhit()){//kbhitÎÞÊäÈë·µ»Ø0£¬£¡·ñ¶¨
-		iny = 3;
+		input = 'q';
 	}
 	else {
-		inx = _getch();
-		iny = inx - 48;
+		input = _getch();
 	}
-	int j;
-	for (j = 0; j < c; j++)
+	int i,j;
+	for (i = 0; i < r ; i++)
 	{
-		if (board[r - 1][j] == 'p')
+		for (j = 0; j < c-1; j++)
+		{
+			if (board[i][j] == 'p')
+				break;
+		}
+		if (board[i][j] == 'p')
 			break;
 	}
-	switch (iny)
-	{
-	case 1:
-		if (j != 0)
-		{
-			int a;
-			a = board[r - 1][j - 1];
-			if (a != '*') {
-				board[r - 1][j - 1] = board[r - 1][j];
-				board[r - 1][j] = a;
-			}
-			if (a == '*')
-				return 1;
-		}break;
-	case 2:
-		if (j != c-1)
-		{
-			int a;
-			a = board[r - 1][j + 1];
-			if (a != '*') {
-				board[r - 1][j + 1] = board[r - 1][j];
-				board[r - 1][j] = a;
-			}
-			if (a == '*')
-				return 1;
-		}
-		break;
-	case 3:
-	    {
-		 break;
-	    }
-	}
+	shot(board, i, j, input);
+	wasd(board, i, j, input);
 }
