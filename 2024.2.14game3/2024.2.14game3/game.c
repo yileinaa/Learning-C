@@ -180,7 +180,7 @@ int Obs_move(char board[R+1][C], int r, int c)
 int Play_move(char board[R][C], int r, int c)
 {
 	char input;
-	Sleep(500);
+	Sleep(200);
 	if (!_kbhit()){//kbhit无输入返回0，！否定
 		input = 'q';
 	}

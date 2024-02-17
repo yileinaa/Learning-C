@@ -1,5 +1,11 @@
-﻿  game1.c
-C:\Users\14633\Desktop\C\1.31\1.31\game1.c(2,20): warning C4028: 形参 1 与声明不同
-C:\Users\14633\Desktop\C\1.31\1.31\game1.c(14,24): warning C4028: 形参 1 与声明不同
-C:\Users\14633\Desktop\C\1.31\1.31\game1.c(60,20): warning C4028: 形参 1 与声明不同
-  1.31.vcxproj -> C:\Users\14633\Desktop\C\1.31\x64\Debug\1.31game2.exe
+﻿  test.c
+C:\Users\14633\Desktop\C\2024.1.31game2\1.31\test.c(13,11): warning C4048: “char (*)[9]”和“char [11][11]”数组的下标不同
+C:\Users\14633\Desktop\C\2024.1.31game2\1.31\test.c(14,11): warning C4048: “char (*)[9]”和“char [11][11]”数组的下标不同
+C:\Users\14633\Desktop\C\2024.1.31game2\1.31\test.c(15,11): warning C4048: “char (*)[9]”和“char [11][11]”数组的下标不同
+C:\Users\14633\Desktop\C\2024.1.31game2\1.31\test.c(17,15): warning C4048: “char (*)[9]”和“char [11][11]”数组的下标不同
+  game1.c
+C:\Users\14633\Desktop\C\2024.1.31game2\1.31\game1.c(2,20): warning C4028: 形参 1 与声明不同
+C:\Users\14633\Desktop\C\2024.1.31game2\1.31\game1.c(14,24): warning C4028: 形参 1 与声明不同
+C:\Users\14633\Desktop\C\2024.1.31game2\1.31\game1.c(60,20): warning C4028: 形参 1 与声明不同
+  正在生成代码...
+  1.31.vcxproj -> C:\Users\14633\Desktop\C\2024.1.31game2\x64\Debug\1.31game2.exe
