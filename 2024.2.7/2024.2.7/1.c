@@ -6,7 +6,7 @@ char* my_strcpy(char* des,const char* src)
 	char* s = src;
 	assert(src != NULL);
 	assert(des != NULL);//╤оят
-	while (*src++ = *des++ )
+	while ( *des++= *src++)
 	{
 		;
 	}

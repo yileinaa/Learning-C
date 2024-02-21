@@ -27,17 +27,17 @@ void Swap(char* buf1, char* buf2, int width)
 	}
 }
 //ÖØ½¨Ã°ÅÝº¯Êý
-void bubble_sort(void* base,int num,int width,int(*cmp)(const void* e1, const void* e2));
+void bubble_sort(void*base,int num,int width,int(*cmp)(const void* e1, const void* e2))
 {
 	int i, j;
-	for (i = 0; i < sz - 1; i++)
+	for (i = 0; i < num - 1; i++)
 	{
 		int flag = 1;
-		for (j = 0; j < sz - 1 - i; j++)
+		for (j = 0; j < num - 1 - i; j++)
 		{
-			if (cmp((char*)base + j * width, (char*)base(j + 1) * width) > 0)
+			if (cmp((char*)base + j * width, (char*)base+(j + 1) * width) > 0)
 			{
-				Swap((char*)base + j * width, (char*)base(j + 1)* width, width);
+				Swap((char*)base + j * width, (char*)base+(j + 1)* width, width);
 			}
 		}
 		if (flag == 1) 
@@ -62,9 +62,11 @@ int cmp_(const void* e1, const void* e2)
 
 int test()
 {
-	struct Stu s[] = { {"zhangsan",15},{"list",30},{"wangwu",25} };
+	struct Stu s[] = { {"\0",15},{"list",30},{"wangwu",25} };
 	int sz = sizeof(s) / sizeof(s[0]);
-	qsort(s, sz, sizeof(s[0]), cmp_str);
+	//qsort(s, sz, sizeof(s[0]), cmp_);
+	bubble_sort(s, sz, sizeof(s[0]), cmp_);
+	printf("%d", sizeof(s));
 }
 
 int main() {

@@ -1,2 +1,4 @@
 ﻿  1.c
-C:\Users\14633\Desktop\C\2024.2.7\2024.2.7\1.c(8,13): error C2166: 左值指定 const 对象
+C:\Users\14633\Desktop\C\2024.2.7\2024.2.7\1.c(1,1): warning C4828: 文件包含在偏移 0x233 处开始的字符，该字符在当前源字符集中无效(代码页 936)。
+C:\Users\14633\Desktop\C\2024.2.7\2024.2.7\1.c(6,8): warning C4090: “初始化”: 不同的“const”限定符
+  2024.2.7.vcxproj -> C:\Users\14633\Desktop\C\2024.2.7\x64\Debug\2024.2.7.exe
