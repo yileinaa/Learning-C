@@ -27,10 +27,10 @@ int main()
 		printf("==\n");
 	else if (ret > 0)
 		printf(">\n");
-	char arr[] = "ssss";
-	strncpy(arr, "ww",9);//若超出字符串长度补'0'
-	strncmp(arr, "ww",9);//比较前n个
-	strncat(arr, "ww",9);
+	char arr[5] = "ssss";
+	strncpy(arr, "ww",3);//若超出字符串长度补'\0'
+	//strncmp(arr, "ww",9);//比较前n个
+	//strncat(arr, "ww",9);
 	printf("%s", arr);
 	return 0;
 }
