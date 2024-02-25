@@ -1,5 +1,5 @@
 #include "game.h"
-void wasd(char b[R][C], int i, int j, char input)
+void ad(char b[R][C], int i, int j, char input)
 {
 	if (input == 'a')
 	{
@@ -7,7 +7,7 @@ void wasd(char b[R][C], int i, int j, char input)
 		{
 			int a;
 			a = b[i][j - 1];
-			if (a != 'p') {
+			if (a != '*') {
 				b[i][j - 1] = b[i][j];
 				b[i][j] = a;
 			}
@@ -19,31 +19,11 @@ void wasd(char b[R][C], int i, int j, char input)
 		{
 			int a;
 			a = b[i][j + 1];
-			if (a != 'p')
+			if (a != '*')
 			{
 				b[i][j + 1] = b[i][j];
 				b[i][j] = a;
 			}
-		}
-	}
-	if (input == 'w')
-	{
-		int a;
-		a = b[i - 1][j];
-		if (a != 'p')
-		{
-			b[i - 1][j] = b[i][j];
-			b[i][j] = a;
-		}
-	}
-	if (input == 's')
-	{
-		int a;
-		a = b[i + 1][j];
-		if (a != 'p' && i != R - 1)
-		{
-			b[i + 1][j] = b[i][j];
-			b[i][j] = a;
 		}
 	}
 	if (input == 'q')
@@ -51,7 +31,7 @@ void wasd(char b[R][C], int i, int j, char input)
 		;
 	}
 }
-void Int(char b[R][C], int r, int c)
+void Int(char b[R+1][C], int r, int c)
 {
 	int i, j;
 	for (i = 0; i < r; i++)
@@ -78,42 +58,38 @@ void Show(char b[R][C], int r, int c)
 		}printf("\n");
 	}
 }
-void create(char b[R][C],int r,int c)
+int create(char b[R][C],int r,int c)
 {
 	int x = rand() % 4 + 1;
 	switch (x)
 	{
 	case 1:
 	{
-	int y = rand() % (C - 2);
-	b[1][y] = b[0][y] = b[1][y + 1] = b[2][y] = '*';//Æ·
-	b[1][y] = 'p';
-	break; 
+		int y = rand() % (C - 2);
+		b[1][y] = '*';//Æ·
+		break;
 	}
-	case 2: 
+	case 2:
 	{
 		int y = rand() % (C - 4);
-		b[1][y] = b[1][y + 1] = b[1][y + 2] = b[1][y + 3] = '*';// |
-		b[1][y] = 'p';
-		break; 
+		b[1][y] = '*';// |
+		break;
 	}
 	case 3:
 	{
 		int y = rand() % (C - 2);
-		b[1][y] = b[1][y + 1] = b[0][y] = b[0][y + 1] = '*';// Ìï
-		b[1][y] = 'p';
+		b[1][y] = '*';// Ìï
 		break;
 	}
 	case 4:
 	{
 		int y = rand() % (C - 4);
-		b[1][y] = b[1][y + 1] = b[1][y + 2] = b[2][y] = '*';// L
-		b[1][y] = 'p';
+		b[1][y] = '*';// L
 		break;
 	}
-	}
+	}return x;
 }
-void move(char b[R][C], int r, int c)
+void control(char b[R][C], int r, int c)
 {
 	char input;
 	Sleep(200);
@@ -123,16 +99,32 @@ void move(char b[R][C], int r, int c)
 	else {
 		input = _getch();
 	}
-	int i,j;
+	int i, j;
 	for (i = 0; i < r; i++)
 	{
 		for (j = 0; j < c - 1; j++)
 		{
-			if (b[i][j] == 'p')
+			if (b[i][j] == '*')
 				break;
 		}
-		if (b[i][j] == 'p')
+		if (b[i][j] == '*')
 			break;
 	}
-	wasd(b, i, j, input);
+	ad(b, i, j, input);
+}
+void b_equal(char*b1,char*b2)
+{
+	while (*b2 = *b1)
+	{
+		;
+	}
+}
+void move(char* b1,int i, int j)
+{
+	b1[i * C + j + C] = b1[i * C + j];
+	b1[i * C + j] = ' ';
+}
+int stop(char* b1, int st) 
+{
+	st
 }

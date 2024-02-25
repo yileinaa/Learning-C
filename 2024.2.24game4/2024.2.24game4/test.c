@@ -8,13 +8,16 @@ void menu()
 void game()
 {
 	srand((unsigned int)time(NULL));
-	char b1[R][C] = { 0 };//in
-	char b2[R][C] = { 0 }; //out
+	char b1[R+1][C] = { 0 };//in
+	char b2[R+1][C] = { 0 }; //out
 	Int(b1, R, C);
-	Int(b2, R, C);
-	create(b1,R,C);
-	move(b1,R,C);
-	move(b1,R,C);
+	b1[R + 1][0] = '\0';
+	while (stop)
+	{
+		create(b1, R, C);
+		move
+	}
+
 }
 void test()
 {
