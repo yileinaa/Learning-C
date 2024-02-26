@@ -1,0 +1,20 @@
+﻿  game.c
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\game.c(123,2): warning C4013: “Sleep”未定义；假设外部返回 int
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\game.c(143,17): warning C4028: 形参 1 与声明不同
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\game.c(144,1): warning C4029: 声明的形参表不同于定义
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\game.c(145,17): warning C4047: “函数”:“char (*)[10]”与“char *”的间接级别不同
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\game.c(145,17): warning C4024: “find_i”: 形参和实参 1 的类型不同
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\game.c(146,17): warning C4047: “函数”:“char (*)[10]”与“char *”的间接级别不同
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\game.c(146,17): warning C4024: “find_j”: 形参和实参 1 的类型不同
+  test.c
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\test.c(4,2): warning C4013: “pritnf”未定义；假设外部返回 int
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\test.c(29,6): error C2198: “move”: 用于调用的参数太少
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\test.c(30,19): warning C4013: “control”未定义；假设外部返回 int
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\test.c(33,13): warning C4013: “cheak”未定义；假设外部返回 int
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\test.c(47,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\test.c(66,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\test.c(68,10): warning C4098: “game”:“void”函数返回值
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\test.c(9,1): fatal  error C1075: “{”: 未找到匹配令牌
+  正在生成代码...
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\game.c(135): warning C4715: “control”: 不是所有的控件路径都返回值
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\game.c(253): warning C4715: “cheak”: 不是所有的控件路径都返回值

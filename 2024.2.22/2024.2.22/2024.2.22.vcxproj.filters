@@ -10,5 +10,8 @@
     <ClCompile Include="1.c">
       <Filter>头文件</Filter>
     </ClCompile>
+    <ClCompile Include="test.c">
+      <Filter>头文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
