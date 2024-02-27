@@ -1,31 +1,50 @@
 #include "game.h"
-void ad(char b[R][C], int i, int j, char input)
+void amove(char b[R][C],int i,int j)
+{
+	int a;
+	a = b[i][j - 1];
+	if (a != '*') {
+		b[i][j - 1] = b[i][j];
+		b[i][j] = a;
+	}
+}
+void dmove(char b[R][C],int i,int j) 
+{
+	int a;
+	a = b[i][j + 1];
+	if (a != '*')
+	{
+		b[i][j + 1] = b[i][j];
+		b[i][j] = a;
+	}
+}
+void ad(char b[R][C], int i, int j, char input, int type, int n)
 {
 	if (input == 'a')
 	{
-		if (j != 0)
-		{
-			int a;
-			a = b[i][j - 1];
-			if (a != '*') {
-				b[i][j - 1] = b[i][j];
-				b[i][j] = a;
-			}
-		}
+		if ((type == 1 && n == 2) || (type == 2 && n == 1) || (type == 2 && n == 2) || (type == 3 && n == 1) || (type == 4 && n == 1) || (type == 4 && n == 4))
+		    if (j != 0 )
+			    amove(b, i, j);
+		if ((type == 1 && n == 2) || (type == 1 && n == 3) || (type == 1 && n == 4) || (type == 4 && n == 2))
+			if (j != 1)
+				amove(b, i, j-1);
+		if((type == 4 && n == 3))
+			if (j != 2)
+				amove(b, i, j-2);
 	}
 	if (input == 'd')
 	{
-		if (j != C - 1)
-		{
-			int a;
-			a = b[i][j + 1];
-			if (a != '*')
-			{
-				b[i][j + 1] = b[i][j];
-				b[i][j] = a;
-			}
-		}
+		if ((type == 1 && n == 4) || (type == 2 && n == 1) || (type == 2 && n == 2) || (type == 4 && n == 2) || (type == 4 && n == 3))
+			if (j != C-1)
+				dmove(b, i, j);
+		if ((type == 1 && n == 1) || (type == 1 && n == 2) || (type == 1 && n == 3) || (type == 3 && n == 1) || (type == 4 && n == 4))
+			if (j != C-2)
+				dmove(b, i, j+1);
+		if ((type == 4 && n == 1))
+			if (j != C-3)
+				dmove(b, i, j+2);
 	}
+		
 	if (input == 'q')
 	{
 		;
@@ -62,10 +81,11 @@ int find_j(char b[R][C], int r, int c)
 }
 void Int(char* b)
 {
-	while (*b!=' ')
+	int i = (R+1)*C-1;
+	while (i)
 	{
-		*b = ' ';
-		b++;
+		*b++ = ' ';
+		i--;
 	}
 }
 void Show(char b[R][C], int r, int c)
@@ -115,29 +135,31 @@ int create(char b[R][C],int r,int c)
 	}
 	}return x;
 }
-char control(char b[R][C], int r, int c)
+char control(char b[R][C], int r, int c, int type, int n , int i, int j)
 {
 	char input;
-	Sleep(1000);
+	Sleep(200);
 	if (!_kbhit()){
 		input = 'q';
 	}
 	else {
 		input = _getch();
 	}
-	int i = find_i(b, R, C);
-	int j = find_j(b, R, C);
-	ad(b, i, j, input);
+	ad(b, i, j, input,type,n);
 	if (input == 'j')
 		return input;
 }
 void b_equal(char*b1,char*b2)
 {
-	while (*b2++ = *b1++)
+	while (*b2 = *b1)
 	{
-		if (*b2 == '&')
+		if (*b1 == '&')
 			*b2 = '*';
+		b1++;
+		b2++;
+
 	}
+
 }
 void move(char* bb, char b[R][C])
 {
@@ -146,10 +168,8 @@ void move(char* bb, char b[R][C])
 	bb[i * C + j + C] = bb[i * C + j];
 	bb[i * C + j] = ' ';
 }
-int cheak(int type,int n,char b[R][C])
+int cheak(int type,int n,char b[R][C],int i,int j)
 {
-	int i = find_i(b, R, C);
-	int j = find_j(b, R, C);
 	if (type == 1 && n == 1)//品
 	{
 		if (b[i + 1][j] == '*' || b[i + 1][j + 1] == '*' || b[i + 1][j - 1] == '*'||i==R-1)
@@ -269,17 +289,47 @@ void Play(char b1[R+1][C],char b2[R+1][C],int type )
 		int n = 1;
 		while (n < 6)
 		{
-			Sleep(1000);
+			Sleep(200);
 			system("cls");
 			if (n == 5)
 				n = 1;
 			move(&b1[0][0], b1);
-			char input = control(b1, R, C);
-			if (input = 'j')
+			int i = find_i(b1, R, C);
+			int j = find_j(b1, R, C);
+			char input = control(b1, R, C,type ,n,i,j);
+			if (input == 'j')
 				n++;
-			stop_2 = cheak(type, n, b1);
+			stop_2 = cheak(type, n, b1,i,j);
 			b_equal(&b1[0][0], &b2[0][0]);
+			Shape(b2, i, j, type, n);
 			Show(b2, R, C);
+			if (stop_2 == 0)
+				break;
 		}
 	}
+}
+void Shape(char b[R][C],int i, int j,int type ,int n)
+{
+	if (type == 1 && n == 1)//品
+		b[i][j] = b[i][j + 1] = b[i][j - 1] = b[i - 1][j] = '*';
+	if (type == 1 && n == 2)//品->
+		b[i][j] = b[i + 1][j] = b[i - 1][j] = b[i][j + 1] = '*';
+	if (type == 1 && n == 3)//品<-
+		b[i][j] = b[i + 1][j] = b[i - 1][j] = b[i][j - 1] = '*';
+	if (type == 1 && n == 4)//品|
+		b[i][j] = b[i][j + 1] = b[i][j - 1] = b[i + 1][j] = '*';
+	if (type == 2 && n == 1)
+		b[i][j] = b[i][j + 1] = b[i][j + 2] = b[i][j + 3] == '*';
+	if (type == 2 && n == 2)
+		b[i][j] = b[i][j - 1] = b[i][j - 2] = b[i][j - 3] = '*';
+	if (type == 3 && n == 1)//田
+		b[i][j] = b[i][j + 1] = b[i - 1][j] = b[i - 1][j + 1] = '*';
+	if (type == 4 && n == 1)//L长底
+		b[i][j] = b[i][j + 1] = b[i][j + 2] = b[i - 1][j] = '*';
+	if (type == 4 && n == 2)//L长边右
+		b[i][j] = b[i][j - 1] = b[i - 1][j] = b[i - 2][j] = '*';
+	if (type == 4 && n == 3)//L长顶
+		b[i][j] = b[i][j - 1] = b[i][j - 2] = b[i + 1][j] = '*';
+	if (type == 4 && n == 4)//L长边左
+		b[i][j] = b[i][j + 1] = b[i - 1][j] = b[i - 2][j] = '*';
 }
