@@ -38,36 +38,34 @@ int find_i(char b[R][C], int r, int c)
 	{
 		for (j = 0; j < c - 1; j++)
 		{
-			if (b[i][j] == 'p')
+			if (b[i][j] == '&')
 				break;
 		}
-		if (b[i][j] == 'p')
+		if (b[i][j] == '&')
 			break;
 	}return i;
 }
 int find_j(char b[R][C], int r, int c)
 {
-	int i, j;
+	int i;
+	int j = 0;
 	for (i = 0; i < r; i++)
 	{
 		for (j = 0; j < c - 1; j++)
 		{
-			if (b[i][j] == 'p')
+			if (b[i][j] == '&')
 				break;
 		}
-		if (b[i][j] == 'p')
+		if (b[i][j] == '&')
 			break;
 	}return j;
 }
-void Int(char b[R+1][C], int r, int c)
+void Int(char* b)
 {
-	int i, j;
-	for (i = 0; i < r; i++)
+	while (*b!=' ')
 	{
-		for (j = 0; j < c; j++)
-		{
-			b[i][j] = ' ';
-		}
+		*b = ' ';
+		b++;
 	}
 }
 void Show(char b[R][C], int r, int c)
@@ -120,7 +118,7 @@ int create(char b[R][C],int r,int c)
 char control(char b[R][C], int r, int c)
 {
 	char input;
-	Sleep(200);
+	Sleep(1000);
 	if (!_kbhit()){
 		input = 'q';
 	}
@@ -135,15 +133,16 @@ char control(char b[R][C], int r, int c)
 }
 void b_equal(char*b1,char*b2)
 {
-	while (*b2 = *b1)
+	while (*b2++ = *b1++)
 	{
-		;
+		if (*b2 == '&')
+			*b2 = '*';
 	}
 }
-void move(char* bb)
+void move(char* bb, char b[R][C])
 {
-	int i = find_i(bb, R, C);
-	int j = find_j(bb, R, C);
+	int i = find_i(b, R, C);
+	int j = find_j(b, R, C);
 	bb[i * C + j + C] = bb[i * C + j];
 	bb[i * C + j] = ' ';
 }
@@ -153,8 +152,9 @@ int cheak(int type,int n,char b[R][C])
 	int j = find_j(b, R, C);
 	if (type == 1 && n == 1)//品
 	{
-		if (b[i + 1][j] == '*' || b[i + 1][j + 1] == '*' || b[i + 1][j - 1] == '*')
+		if (b[i + 1][j] == '*' || b[i + 1][j + 1] == '*' || b[i + 1][j - 1] == '*'||i==R-1)
 		{
+			b[i][j] = b[i][j + 1] = b[i][j - 1] = b[i - 1][j] = '*';
 			return 0;
 		}
 		else
@@ -162,8 +162,9 @@ int cheak(int type,int n,char b[R][C])
 	}
 	if (type == 1 && n == 2)//品->
 	{
-		if (b[i + 1][j] == '*' || b[i + 1][j + 1] == '*' )
+		if (b[i + 1][j] == '*' || b[i + 1][j + 1] == '*'||i == R - 2)
 		{
+			b[i][j] = b[i + 1][j] = b[i - 1][j] = b[i][j + 1] = '*';
 			return 0;
 		}
 		else
@@ -171,8 +172,9 @@ int cheak(int type,int n,char b[R][C])
 	}
 	if (type == 1 && n == 3)//品<-
 	{
-		if (b[i + 1][j] == '*' || b[i + 1][j - 1] == '*' )
+		if (b[i + 1][j] == '*' || b[i + 1][j - 1] == '*' || i == R - 2)
 		{
+			b[i][j] = b[i + 1][j] = b[i - 1][j] = b[i][j-1] = '*';
 			return 0;
 		}
 		else
@@ -180,8 +182,9 @@ int cheak(int type,int n,char b[R][C])
 	}
 	if (type == 1 && n == 4)//品|
 	{
-		if (b[i + 2][j] == '*' || b[i + 1][j - 1] == '*'|| b[i + 1][j + 1] == '*')
+		if (b[i + 2][j] == '*' || b[i + 1][j - 1] == '*'|| b[i + 1][j + 1] == '*'|| i == R - 2)
 		{
+			b[i][j] = b[i][j + 1] = b[i][j - 1] = b[i + 1][j] = '*';
 			return 0;
 		}
 		else
@@ -189,8 +192,9 @@ int cheak(int type,int n,char b[R][C])
 	}
 	if (type == 2 && n == 1)
 	{
-		if(b[i+1][j]=='*' || b[i+1][j+1] == '*'||b[i+1][j+2] == '*'||b[i+1][j+3] == '*')
+		if(b[i+1][j]=='*' || b[i+1][j+1] == '*'||b[i+1][j+2] == '*'||b[i+1][j+3] == '*'|| i == R - 1)
 		{
+			b[i][j] = b[i][j + 1] = b[i][j + 2] = b[i][j + 3] == '*';
 			return 0;
 		}
 		else
@@ -198,8 +202,9 @@ int cheak(int type,int n,char b[R][C])
 	}
 	if (type == 2 && n == 2)
 	{
-		if (b[i + 1][j] == '*')
+		if (b[i + 1][j] == '*'|| i == R - 1)
 		{
+			b[i][j] = b[i][j - 1] = b[i][j - 2] = b[i][j - 3] = '*';
 			return 0;
 		}
 		else
@@ -207,8 +212,9 @@ int cheak(int type,int n,char b[R][C])
 	}
 	if (type == 3 && n == 1)//田
 	{
-		if(b[i+1][j]=='*'|| b[i+1][j+1]=='*')
+		if(b[i+1][j]=='*'|| b[i+1][j+1]=='*'|| i == R - 1)
 		{
+			b[i][j] = b[i][j + 1] = b[i - 1][j] = b[i - 1][j + 1] = '*';
 			return 0;
 		}
 		else
@@ -216,8 +222,9 @@ int cheak(int type,int n,char b[R][C])
 	}
 	if (type == 4 && n == 1)//L长底
 	{
-		if(b[i + 1][j] == '*' || b[i + 1][j + 1] == '*' || b[i + 1][j + 2] == '*')
+		if(b[i + 1][j] == '*' || b[i + 1][j + 1] == '*' || b[i + 1][j + 2] == '*'|| i == R - 1)
 		{
+			b[i][j] = b[i][j + 1] = b[i][j + 2] = b[i - 1][j] = '*';
 			return 0;
 		}
 		else
@@ -225,8 +232,9 @@ int cheak(int type,int n,char b[R][C])
 	}
 	if (type == 4 && n == 2)//L长边右
 	{
-		if (b[i + 1][j] == '*' || b[i + 1][j -1] == '*')
+		if (b[i + 1][j] == '*' || b[i + 1][j -1] == '*'|| i == R - 1)
 		{
+			b[i][j] = b[i][j - 1] = b[i - 1][j] = b[i - 2][j] = '*';
 			return 0;
 		}
 		else
@@ -234,8 +242,9 @@ int cheak(int type,int n,char b[R][C])
 	}
 	if (type == 4 && n == 3)//L长顶
 	{
-		if (b[i + 2][j] == '*' || b[i + 1][j -1] == '*' || b[i + 1][j - 2] == '*')
+		if (b[i + 2][j] == '*' || b[i + 1][j - 1] == '*' || b[i + 1][j - 2] == '*' || i == R - 2)
 		{
+			b[i][j] = b[i][j - 1] = b[i][j - 2] = b[i + 1][j] = '*';
 			return 0;
 		}
 		else
@@ -243,11 +252,34 @@ int cheak(int type,int n,char b[R][C])
 	}
 	if (type == 4 && n == 4)//L长边左
 	{
-		if (b[i + 3][j] == '*' || b[i + 1][j + 1] == '*')
+		if (b[i + 3][j] == '*' || b[i + 1][j + 1] == '*'||i==R-3)
 		{
+			b[i][j] = b[i][j + 1] = b[i - 1][j] = b[i - 2][j] = '*';
 			return 0;
 		}
 		else
 			return 1;
+	}
+}
+void Play(char b1[R+1][C],char b2[R+1][C],int type )
+{
+	int stop_2 = 1;
+	while (stop_2)
+	{
+		int n = 1;
+		while (n < 6)
+		{
+			Sleep(1000);
+			system("cls");
+			if (n == 5)
+				n = 1;
+			move(&b1[0][0], b1);
+			char input = control(b1, R, C);
+			if (input = 'j')
+				n++;
+			stop_2 = cheak(type, n, b1);
+			b_equal(&b1[0][0], &b2[0][0]);
+			Show(b2, R, C);
+		}
 	}
 }
