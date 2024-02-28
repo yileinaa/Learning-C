@@ -1,13 +1,4 @@
-﻿  game.c
-C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\game.c(16,13): warning C4098: “wasd”:“void”函数返回值
-C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\game.c(31,13): warning C4098: “wasd”:“void”函数返回值
-C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\game.c(44,12): warning C4098: “wasd”:“void”函数返回值
-C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\game.c(56,12): warning C4098: “wasd”:“void”函数返回值
-C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\game.c(64,1): warning C4029: 声明的形参表不同于定义
-C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\game.c(72,19): warning C4020: “Show”: 实参太多
-C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\game.c(94,18): warning C4020: “Show”: 实参太多
-C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\game.c(95,3): warning C4013: “Sleep”未定义；假设外部返回 int
-C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\game.c(125,1): warning C4029: 声明的形参表不同于定义
-C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\game.c(179): warning C4715: “Obs_move”: 不是所有的控件路径都返回值
-C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\game.c(203): warning C4716: “Play_move”: 必须返回一个值
+﻿  test.c
+C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\test.c(18,17): warning C4020: “Show”: 实参太多
+C:\Users\14633\Desktop\C\2024.2.14game3\2024.2.14game3\test.c(27,18): warning C4020: “Show”: 实参太多
   2024.2.14game3.vcxproj -> C:\Users\14633\Desktop\C\2024.2.14game3\x64\Debug\2024.2.14game3.exe

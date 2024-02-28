@@ -1,4 +1,6 @@
 ﻿  game.c
-C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\game.c(151): warning C4715: “control”: 不是所有的控件路径都返回值
-C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\game.c(283): warning C4715: “cheak”: 不是所有的控件路径都返回值
+  test.c
+  正在生成代码...
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\game.c(162): warning C4715: “control”: 不是所有的控件路径都返回值
+C:\Users\14633\Desktop\C\2024.2.24game4\2024.2.24game4\game.c(290): warning C4715: “cheak”: 不是所有的控件路径都返回值
   2024.2.24game4.vcxproj -> C:\Users\14633\Desktop\C\2024.2.24game4\x64\Debug\2024.2.24game4.exe

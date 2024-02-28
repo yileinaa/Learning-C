@@ -15,6 +15,11 @@ void game()
 	while (stop_1)
 	{
 		int type = create(b1, R, C);
+		//b1[0][0] = '&';
+		if (type == 10) {
+			printf("Ê§°Ü");
+			break;
+		}
 		Play(b1, b2, type);
 	}
 }
