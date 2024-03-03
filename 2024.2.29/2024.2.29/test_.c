@@ -41,6 +41,7 @@ int main()
 			break;
 		case 0:
 			printf("ÍË³ö£¡");
+			Destroy(&con);
 			break;
 		default:
 			printf("´íÎó£¡");

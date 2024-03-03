@@ -1,22 +1,69 @@
 #include "contact.h"
-void Init(Contact* pc) 
+//void Init(Contact* pc) 
+//{
+//	assert(pc);
+//	pc->count = 0;
+//	memset(pc->data, 0, sizeof(pc->data));
+//}//静态
+void Init(Contact* pc)
 {
 	assert(pc);
 	pc->count = 0;
-	memset(pc->data, 0, sizeof(pc->data));
+	pc->data = (PeoInfo*)calloc(3 ,sizeof(PeoInfo));
+	if (pc->data = NULL)
+	{
+		printf("Init:%s\n", strerror(errno));
+		return;
+	}
+	pc->capacity = DEFAULT;
+	return 0;
+}
+//void Add(Contact* pc)
+//{
+//	assert(pc);
+//	if (pc->count == 100)
+//	{
+//		printf("已满！\n");
+//		return;
+//	}
+//	printf("名字!");
+//	scanf("%s", pc->data[pc->count].name);
+//	printf("年龄!");
+//	scanf("%s",& (pc->data[pc->count].age));
+//	printf("性别!");
+//	scanf("%s", pc->data[pc->count].sex);
+//	printf("电话!");
+//	scanf("%s", pc->data[pc->count].tele);
+//	printf("地址!");
+//	scanf("%s", pc->data[pc->count].addr);
+//	pc->count++;
+//	printf("增加成功\n");
+//}//静态
+void check(Contact* pc)
+{
+	if (pc->count == pc->capacity) 
+	{
+		PeoInfo* ptr = (PeoInfo*)realloc(pc->data, (pc->capacity + INCREASE) * sizeof(PeoInfo));
+		if (ptr == NULL)
+		{
+			printf("Add:%s\n", strerror(errno));
+			return;
+		}
+		else {
+			pc->data = ptr;
+			pc->capacity += INCREASE;
+		}
+	}
+	    printf("增容成功！");
 }
 void Add(Contact* pc)
 {
 	assert(pc);
-	if (pc->count == 100)
-	{
-		printf("已满！\n");
-		return;
-	}
+	check(pc);
 	printf("名字!");
 	scanf("%s", pc->data[pc->count].name);
 	printf("年龄!");
-	scanf("%s",& (pc->data[pc->count].age));
+	scanf("%s", &(pc->data[pc->count].age));
 	printf("性别!");
 	scanf("%s", pc->data[pc->count].sex);
 	printf("电话!");
@@ -25,7 +72,7 @@ void Add(Contact* pc)
 	scanf("%s", pc->data[pc->count].addr);
 	pc->count++;
 	printf("增加成功\n");
-}
+}//静态
 void Show(const Contact* pc)
 {
 	assert(pc);
@@ -131,4 +178,11 @@ void	Sort(Contact* pc)//名称排序
 	assert(pc);
 	qsort(pc->data, pc->count, sizeof(PeoInfo), cmp);
 	printf("排序成功！");
+}
+void Destroy(Contact * pc)
+{
+	assert(pc);
+
+	free(pc);
+	pc->data = NULL;
 }
