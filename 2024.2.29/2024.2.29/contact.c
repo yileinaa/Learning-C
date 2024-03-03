@@ -171,7 +171,7 @@ void Modify(Contact* pc)
 }
 int cmp(const void* e1, const void* e2)
 {
-	return strcmp(((PeoInfo*)e1)->name, ((PeoInfo*)e2)->name);;
+	return strcmp(((PeoInfo*)e1)->name, ((PeoInfo*)e2)->name);
 }
 void	Sort(Contact* pc)//Ãû³ÆÅÅÐò
 {
@@ -185,4 +185,40 @@ void Destroy(Contact * pc)
 
 	free(pc);
 	pc->data = NULL;
+}
+void Save(const Contact* pc)
+{
+	assert(pc);
+	FILE* pfWrite = fopen("contact.txt", "wb");
+	if (pfWrite == NULL)
+	{
+		perror("Save");
+		return;
+	}
+	int i = 0;
+	for (i = 0; i < pc->count;i++)
+	{
+		fwrite(pc->data+i, sizeof(PeoInfo), 1, pfWrite);
+	}
+	fclose(pfWrite);
+		pfWrite = NULL;
+}
+void Load( Contact* pc)
+{
+	assert(pc);
+	FILE* pfRead = fopen("contact.txt", "rb");
+	if (pfRead == NULL)
+	{
+		perror("Load");
+		return;
+	}
+	PeoInfo tmp = { 0 };
+	while (fread(&tmp, sizeof(PeoInfo), 1, pfRead) == 1)
+	{
+		check(pc);
+		pc->data[pc->count] = tmp;
+		pc->count++;
+	}
+	fclose(pfRead);
+	pfRead = NULL;
 }
