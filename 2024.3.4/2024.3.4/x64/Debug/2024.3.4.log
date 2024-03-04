@@ -1,0 +1,7 @@
+﻿  1.c
+C:\Users\14633\Desktop\C\2024.3.4\2024.3.4\1.c(5,1): warning C4010: 单行注释包含行继续符
+C:\Users\14633\Desktop\C\2024.3.4\2024.3.4\1.c(19,5): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“double”
+C:\Users\14633\Desktop\C\2024.3.4\2024.3.4\1.c(19,5): warning C4474: printf: 格式字符串中传递的参数太多
+C:\Users\14633\Desktop\C\2024.3.4\2024.3.4\1.c(19,5): message : 占位符和其参数预计 1 可变参数，但提供的却是 2 参数
+C:\Users\14633\Desktop\C\2024.3.4\2024.3.4\1.c(18,11): warning C4305: “初始化”: 从“double”到“float”截断
+  2024.3.4.vcxproj -> C:\Users\14633\Desktop\C\2024.3.4\x64\Debug\2024.3.4.exe
